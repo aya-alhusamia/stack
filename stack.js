@@ -53,39 +53,51 @@ class Node{
         return this.topNode.gitData()
     }
 
-    caards=()=>{
-        let currentNode=this.topNode
+    display = () => {
+        let currentNode = this.topNode
         while(currentNode){
-            console.log(`Numbers:${number} , color${color}`)
+            console.log(`number : ${currentNode.number} , color : ${currentNode.color}`)
+            currentNode = currentNode.next
         }
-
-}
-}
-const color =["red","blue","green","yallow"]
-const number=[1,2,3,4,5,6,7,8,9]
-const random=(x)=>{
-    const card = Math.floor(Math.random()*x.length)
-    return x[card]
-}
-const cards = new Stack(20)
-const cardsArray=[]
-while(!cards.isFull()){
-    const number = random(number)
-    const color = random(color)
-    if(!cardsArray.includes(`${color},${number}`)){
-        cards.push(color,number)
-        cardsArray.push(`${color},${number}`) 
     }
+    includes = (color , number) => {
+        let currentNode = this.topNode
+        while(currentNode) {
+            if (currentNode.number === number && currentNode.color === color) 
+                return true
+                currentNode = currentNode.next
+        }
+        return false
+       }
 }
-console.log("Deck: ")
-cards.caards()
+const colors =["red","blue","green","yallow"]
+const numbers=[1,2,3,4,5,6,7,8,9]
+const random = (array) => {
+    const index = Math.floor(Math.random()*array.length)
+    return array[index]
+}
 
-let player1=[]
-let player1=[]
-let i=0
-while(i<5){
-player1.push(cards.pop())
-player2.push(cards.pop())
-i++
+const cardsStack = new Stack(20)
+//const cardsArray = []
+
+while (!cardsStack.isFull()) {
+    const number = random(numbers)
+    const color = random(colors)
+    if (!cardsStack.includes(color, number))
+    cardsStack.push(color , number)
 }
-console.log("player 1 card :"+cards)
+
+console.log(" Deck : ")
+cardsStack.display()
+
+ let player1 = []
+ let player2 =[]
+ 
+ let i = 0
+ while (i < 5) {
+     player1.push(cardsStack.pop())
+     player2.push(cardsStack.pop())
+     i++
+ }
+ console.log("player 1 cards : " , player1)
+ console.log("player 2 cards : " , player2) 
