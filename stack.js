@@ -40,13 +40,13 @@ class Node{
         }
         
     }
-    get isFull(){
+     isFull(){
         return this.size===this.limit
     }
-    get isEmpty(){
+     isEmpty(){
         return this.size===0
     }
-    get peek(){
+     peek(){
         if(this.isEmpty()){
             console.log("There is no cards")
         }
@@ -65,7 +65,7 @@ class Node{
         while(currentNode) {
             if (currentNode.number === number && currentNode.color === color) 
                 return true
-                currentNode = currentNode.next
+             currentNode = currentNode.next
         }
         return false
        }
@@ -78,7 +78,6 @@ const random = (array) => {
 }
 
 const cardsStack = new Stack(20)
-//const cardsArray = []
 
 while (!cardsStack.isFull()) {
     const number = random(numbers)
